@@ -91,11 +91,11 @@ if __name__ == "__main__":
         '--job-dir',
         type=str,
         default='output',
-        help='directory to store checkpointed models'
+        help='directory to store checkpoints'
     )
     PARSER.add_argument(
         '--eval-steps',
-        help='Number of steps to run evalution for at each checkpoint',
+        help='Number of steps to run evaluation for at each checkpoint',
         default=1,
         type=int
     )
