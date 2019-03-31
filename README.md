@@ -63,7 +63,7 @@ CLASSES  PROBABILITIES
 
 The values you use for the $MODEL_NAME variable and the $VERSION variable can be found in your project on the Google Cloud web interface. You will need these values and your Google Cloud project id to submit your coding test.
 
-To be able to pass the coding test. You should be able to get an accuracy of 65% on our secret dataset of mugs (which you don't have access to). If your accuracy however seems to be less than 65% after we evaluated it, you can just keep submitting solutions until you are able to get an accuracy of 65%.
+To be able to pass the coding test. You should be able to get an accuracy of 75% on our secret dataset of mugs (which you don't have access to). If your accuracy however seems to be less than 75% after we evaluated it, you can just keep submitting solutions until you are able to get an accuracy of 75%.
 
 ### Submitting your coding test
 
