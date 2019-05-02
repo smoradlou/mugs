@@ -72,7 +72,7 @@ Once you are able to execute the command above without errors, you can add us to
 * Go to the menu of your project
 * Click IAM & admin
 * Click Add
-* Add automated-evaluation@findml6mug-001.iam.gserviceaccount.com with the Project Owner role
+* Add automated-evaluation@billing-skyhaus.iam.gserviceaccount.com with the Project Owner role
 
 If you added us to your project you should fill in [this form](https://docs.google.com/forms/d/1A6LgwK6zoZVZG3vkDE823jpSc1Cw6VQ4aTd_07ILqwI) so we are able to automatically evaluate your test. Once you've filled in the form you should receive an email with the results of your coding test within 2 hours. We'll hope with you that your results are good enough to land an interview at ML6. If however you don't, you can resubmit a new coding test solution as many times you want so don't give up!
 
