@@ -4,11 +4,12 @@ It uses the arguments it got via the gcloud command."""
 
 import argparse
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from tensorflow.contrib.training.python.training import hparam
-
-import trainer.data as data
-import trainer.model as model
+#from tensorflow.compat.v1.contrib.training.python.training import hparam
+import data as data
+import model as model
 
 
 def train_model(params):
