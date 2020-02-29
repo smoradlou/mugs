@@ -4,14 +4,22 @@ It uses the arguments it got via the gcloud command."""
 
 import argparse
 import os
+import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
+import datetime
+# import tensorflow
 from tensorflow.contrib.training.python.training import hparam
-#from tensorflow.compat.v1.contrib.training.python.training import hparam
+# from tensorflow.compat.v1.contrib.training.python.training import hparam
+# import tensorboard.plugins.hparams as hparam
+# from tensorboard.plugins.hparams import api as hp
+
 import data as data
 import model as model
 
-
+# import logging
+# logger = tf.get_logger()
+# logger.setLevel(logging.INFO)
 def train_model(params):
     """The function gets the training data from the training folder,
     the evaluation data from the test folder and trains your solution from the model.py file with it."""
@@ -40,7 +48,6 @@ def train_model(params):
         estimator.train(train_input_fn, steps=steps_per_eval)
         estimator.evaluate(eval_input_fn)
 
-
 if __name__ == "__main__":
     PARSER = argparse.ArgumentParser()
     PARSER.add_argument(
@@ -53,6 +60,7 @@ if __name__ == "__main__":
     ARGS = PARSER.parse_args()
     tf.logging.set_verbosity('INFO')
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = str(tf.logging.__dict__['INFO'] / 10)
+    # os.environ['TF_CPP_MIN_LOG_LEVEL'] = str(logger.__dict__[] / 10)
 
     HPARAMS = hparam.HParams(**ARGS.__dict__)
     train_model(HPARAMS)
