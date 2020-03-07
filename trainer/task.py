@@ -40,7 +40,7 @@ def train_model(params):
         num_epochs=1,
         shuffle=False)
 
-    estimator = tf.estimator.Estimator(model_fn=model.solution)
+    estimator = tf.estimator.Estimator(model_fn=model.solution , model_dir='/tmp/tf2')
 
     steps_per_eval = int(model.get_training_steps() / params.eval_steps)
 
