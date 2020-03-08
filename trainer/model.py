@@ -8,7 +8,7 @@ tf.disable_v2_behavior()
 def get_training_steps():
     """Returns the number of batches that will be used to train your solution.
     It is recommended to change this value."""
-    return 2000
+    return 4000
 
 
 def get_batch_size():
@@ -23,21 +23,40 @@ def solution(features, labels, mode):
     input_layer = tf.reshape(features["x"], [-1, 64, 64, 3])
 
     # TODO: Code of your solution
-
+    # Create the base model from the pre-trained model MobileNet V2
+    # IMG_SIZE = 64
+    # IMG_SHAPE = (IMG_SIZE, IMG_SIZE, 3)
+    # base_model = tf.keras.applications.MobileNetV2(input_shape=IMG_SHAPE,
+    #                                            include_top=False,
+    #                                            weights='imagenet')
+    # base_model.trainable = False
+    # # Let's take a look at the base model architecture
+    # base_model.summary()
     # define model
     model = tf.keras.models.Sequential([
-        tf.keras.layers.Conv2D(32, (7,7), activation='relu', padding="same", input_shape=(64, 64, 3)),
+        tf.keras.layers.Conv2D(32, (7,7), strides=(2,2),activation='relu', padding="same", input_shape=(64, 64, 3)),
         tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(64, (5,5), activation='relu', padding="same"),
+
+        tf.keras.layers.Conv2D(64, (3,3), strides=(1,1), activation='relu', padding="same"),
+        # tf.keras.layers.MaxPooling2D(2, 2),
+
+        tf.keras.layers.Conv2D(64, (3,3), strides=(1,1), activation='relu', padding="same"),
         tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(128, (3,3), activation='relu', padding="same"),
+
+        tf.keras.layers.Conv2D(16, (3,3), strides=(1,1), activation='relu', padding="same"),
         tf.keras.layers.MaxPooling2D(2, 2),
-        tf.keras.layers.Conv2D(128, (3,3), activation='relu', padding="same"),
-        tf.keras.layers.MaxPooling2D(2, 2), 
+
+        # tf.keras.layers.Conv2D(64, (2,2), strides=(1,1), activation='relu', padding="same"),
+        # tf.keras.layers.MaxPooling2D(2, 2),
+        # base_model,
+        # tf.keras.layers.GlobalAveragePooling2D(),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(1024, activation='relu'),
-        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dropout(rate=0.6),
+        tf.keras.layers.Dense(1024, activation='relu'),
         tf.keras.layers.Dropout(rate=0.4),
+        # tf.keras.layers.Dense(64, activation='relu'),
+        # tf.keras.layers.Dropout(rate=0.4),
         tf.keras.layers.Dense(4, activation='softmax')
     ])
     logits = model(input_layer, training=False)
